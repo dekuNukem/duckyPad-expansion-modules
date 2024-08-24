@@ -97,13 +97,13 @@ int fputc(int ch, FILE *f)
 void towards_duckypad_send(uint8_t data)
 {
   HAL_UART_Transmit(&towards_duckypad_uart, &data, 1, 100);
-  printf("TDS:%02x\n", data);
+  // printf("TDS:%02x\n", data);
 }
 
 void away_from_duckypad_send(uint8_t data)
 {
   HAL_UART_Transmit(&away_from_duckypad_uart, &data, 1, 100);
-  printf("AFDS:%02x\n", data);
+  // printf("AFDS:%02x\n", data);
 }
 
 /* USER CODE END PV */
@@ -144,19 +144,19 @@ volatile uint8_t current_state;
 
 void towards_duckypad_receive_parse(uint8_t this_cmd)
 {
-  printf("TDR:%02x\n", this_cmd);
+  // printf("TDR:%02x\n", this_cmd);
   if(this_cmd & CMD_ASSIGN_START_ID_BITMASK)
   {
     starting_id = towards_duckypad_rx_buf[0] & 0x3f;
     HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
     current_state = STATE_READY;
-    printf("Got ID: %x\n", starting_id);
+    // printf("Got ID: %x\n", starting_id);
   }
 }
 
 void away_from_duckypad_receive_parse(uint8_t this_cmd)
 {
-  printf("AFDR:%02x\n", this_cmd);
+  // printf("AFDR:%02x\n", this_cmd);
   uint8_t cmd_type = this_cmd & TOP_TWO_BITS;
   if(cmd_type == CMD_ASK_START_ID_BITMASK)
   {
@@ -528,7 +528,7 @@ void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+     ex: pdrintf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
