@@ -1,4 +1,6 @@
-**duckyPad Pro Expansion Modules** lets you add external **switches / buttons / foot pedals** to your duckyPad Pro.
+# duckyPad Pro Expansion Modules
+
+duckyPad Expansion Modules lets you add external **switches / buttons / foot pedals** to your duckyPad Pro.
 
 * **6 channels** per module
 
@@ -10,7 +12,13 @@
 
 ## User Guide
 
-overview
+Still writing! Check back later!
+
+![alt_text](resources/photos/underc.gif)
+
+![alt_text](resources/photos/ch.png)
+
+![alt_text](resources/photos/wiring.png)
 
 pinouts, terminal block and jack
 
