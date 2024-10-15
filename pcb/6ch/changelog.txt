@@ -14,11 +14,11 @@ hooked up LED to TX pin, dual purpose.
 
 
 Ch	Pin
-1	
-2	
-3	
-4	
-5	
-6	
-7	
-8	
+1	PA4
+2	PA1
+3	PA0
+4	PF1
+5	PF0
+6	PA5
+7	PB1
+8	PA6

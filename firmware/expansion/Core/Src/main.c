@@ -88,9 +88,9 @@ UART_HandleTypeDef huart2;
 
 int fputc(int ch, FILE *f)
 {
-  __disable_irq();
-  softserial_putc(ch);
-  __enable_irq();
+  // __disable_irq();
+  // softserial_putc(ch);
+  // __enable_irq();
   return ch;
 }
 
@@ -148,7 +148,6 @@ void towards_duckypad_receive_parse(uint8_t this_cmd)
   if(this_cmd & CMD_ASSIGN_START_ID_BITMASK)
   {
     starting_id = towards_duckypad_rx_buf[0] & 0x3f;
-    HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
     current_state = STATE_READY;
     // printf("Got ID: %x\n", starting_id);
   }
@@ -221,7 +220,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   delay_us_init(&htim2);
-  softserial_init(SOFTSERIAL_TX_GPIO_Port, SOFTSERIAL_TX_Pin);
+  // softserial_init(SOFTSERIAL_TX_GPIO_Port, SOFTSERIAL_TX_Pin);
   sw_event_queue_init();
   HAL_TIM_Base_Start_IT(&htim16);
   current_state = STATE_UNINITIALIZED;
@@ -244,10 +243,11 @@ int main(void)
       HAL_Delay(get_rand_delay_ms());
       uint8_t cmd_ask_starting_id_towards_duckypad = fw_version_major & 0x3f;
       towards_duckypad_send(cmd_ask_starting_id_towards_duckypad);
-      HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+      HAL_GPIO_TogglePin(SSTX_USERLED_GPIO_Port, SSTX_USERLED_Pin);
     }
     else
     {
+      HAL_GPIO_WritePin(SSTX_USERLED_GPIO_Port, SSTX_USERLED_Pin, GPIO_PIN_SET);
       HAL_Delay(UART_QUEUE_SEND_FREQ_MS);
       uint8_t this_cmd;
       if(q_pop(&switch_event_queue, &this_cmd) == 0)
@@ -463,35 +463,40 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SOFTSERIAL_TX_GPIO_Port, SOFTSERIAL_TX_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(SSTX_USERLED_GPIO_Port, SSTX_USERLED_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pins : USER_BUTTON_Pin CH4_Pin */
-  GPIO_InitStruct.Pin = USER_BUTTON_Pin|CH4_Pin;
+  /*Configure GPIO pin : USER_BUTTON_Pin */
+  GPIO_InitStruct.Pin = USER_BUTTON_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(USER_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CH5_Pin CH6_Pin */
-  GPIO_InitStruct.Pin = CH5_Pin|CH6_Pin;
+  /*Configure GPIO pins : CH5_Pin CH4_Pin */
+  GPIO_InitStruct.Pin = CH5_Pin|CH4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CH1_Pin CH2_Pin CH3_Pin */
-  GPIO_InitStruct.Pin = CH1_Pin|CH2_Pin|CH3_Pin;
+  /*Configure GPIO pins : CH3_Pin CH2_Pin CH1_Pin CH6_Pin
+                           CH8_Pin */
+  GPIO_InitStruct.Pin = CH3_Pin|CH2_Pin|CH1_Pin|CH6_Pin
+                          |CH8_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SOFTSERIAL_TX_Pin USER_LED_Pin */
-  GPIO_InitStruct.Pin = SOFTSERIAL_TX_Pin|USER_LED_Pin;
+  /*Configure GPIO pin : SSTX_USERLED_Pin */
+  GPIO_InitStruct.Pin = SSTX_USERLED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(SSTX_USERLED_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : CH7_Pin */
+  GPIO_InitStruct.Pin = CH7_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(CH7_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

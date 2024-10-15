@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "cqueue.h": "c",
+        "main.h": "c",
+        "stdint.h": "c"
+    }
+}

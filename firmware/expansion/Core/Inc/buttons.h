@@ -8,14 +8,16 @@
 #include "stm32f0xx_hal.h"
 #include "cQueue.h"
 
-#define MAX_CHANNELS 64
-#define CHANNEL_COUNT 6
+#define MAX_CHANNELS 32
+#define CHANNEL_COUNT 8
 #define CHANNEL_1 0
 #define CHANNEL_2 1
 #define CHANNEL_3 2
 #define CHANNEL_4 3
 #define CHANNEL_5 4
 #define CHANNEL_6 5
+#define CHANNEL_7 6
+#define CHANNEL_8 7
 
 #define SW_EVENT_RELEASE 0
 #define SW_EVENT_SHORT_PRESS 1

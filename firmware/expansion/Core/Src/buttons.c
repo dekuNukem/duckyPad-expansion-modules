@@ -19,6 +19,8 @@ void channel_update(uint8_t start_id)
   this_channel_status[CHANNEL_4] = HAL_GPIO_ReadPin(CH4_GPIO_Port, CH4_Pin);
   this_channel_status[CHANNEL_5] = HAL_GPIO_ReadPin(CH5_GPIO_Port, CH5_Pin);
   this_channel_status[CHANNEL_6] = HAL_GPIO_ReadPin(CH6_GPIO_Port, CH6_Pin);
+  this_channel_status[CHANNEL_7] = HAL_GPIO_ReadPin(CH7_GPIO_Port, CH7_Pin);
+  this_channel_status[CHANNEL_8] = HAL_GPIO_ReadPin(CH8_GPIO_Port, CH8_Pin);
 
   for (int i = 0; i < CHANNEL_COUNT; ++i)
   {

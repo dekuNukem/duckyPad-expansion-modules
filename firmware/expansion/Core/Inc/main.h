@@ -61,20 +61,22 @@ void Error_Handler(void);
 #define USER_BUTTON_GPIO_Port GPIOB
 #define CH5_Pin GPIO_PIN_0
 #define CH5_GPIO_Port GPIOF
-#define CH6_Pin GPIO_PIN_1
-#define CH6_GPIO_Port GPIOF
-#define CH1_Pin GPIO_PIN_0
-#define CH1_GPIO_Port GPIOA
+#define CH4_Pin GPIO_PIN_1
+#define CH4_GPIO_Port GPIOF
+#define CH3_Pin GPIO_PIN_0
+#define CH3_GPIO_Port GPIOA
 #define CH2_Pin GPIO_PIN_1
 #define CH2_GPIO_Port GPIOA
-#define CH3_Pin GPIO_PIN_4
-#define CH3_GPIO_Port GPIOA
-#define SOFTSERIAL_TX_Pin GPIO_PIN_6
-#define SOFTSERIAL_TX_GPIO_Port GPIOA
-#define USER_LED_Pin GPIO_PIN_7
-#define USER_LED_GPIO_Port GPIOA
-#define CH4_Pin GPIO_PIN_1
-#define CH4_GPIO_Port GPIOB
+#define CH1_Pin GPIO_PIN_4
+#define CH1_GPIO_Port GPIOA
+#define CH6_Pin GPIO_PIN_5
+#define CH6_GPIO_Port GPIOA
+#define CH8_Pin GPIO_PIN_6
+#define CH8_GPIO_Port GPIOA
+#define SSTX_USERLED_Pin GPIO_PIN_7
+#define SSTX_USERLED_GPIO_Port GPIOA
+#define CH7_Pin GPIO_PIN_1
+#define CH7_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
