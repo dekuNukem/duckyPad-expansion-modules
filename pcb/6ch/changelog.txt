@@ -1,0 +1,13 @@
+2024 10 15
+
+Added LED on PB1 channel
+
+moved TX pin from PA6 to PA7
+
+PA6 now is an additional channel
+
+PA6 on sleeve
+
+added LEDs on PA6
+
+hooked up LED to TX pin, dual purpose.
