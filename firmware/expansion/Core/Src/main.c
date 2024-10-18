@@ -54,10 +54,15 @@ void ttywrch (int ch) {
 2024 08 12
 0.0.1
 first commit
+
+2024 10 15
+0.1.0
+8 channels
+LED double blinks with button press and upstream receive
 */
 uint8_t fw_version_major = 0;
-uint8_t fw_version_minor = 0;
-uint8_t fw_version_patch = 1;
+uint8_t fw_version_minor = 1;
+uint8_t fw_version_patch = 0;
 
 #define UART_BUF_SIZE 16
 
@@ -67,11 +72,17 @@ uint8_t away_from_duckypad_tx_buf[UART_BUF_SIZE];
 uint8_t away_from_duckypad_rx_buf[UART_BUF_SIZE];
 
 uint8_t starting_id;
+
+volatile uint8_t current_state;
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define LED_ON() HAL_GPIO_WritePin(SSTX_USERLED_GPIO_Port, SSTX_USERLED_Pin, GPIO_PIN_SET)
+#define LED_OFF() HAL_GPIO_WritePin(SSTX_USERLED_GPIO_Port, SSTX_USERLED_Pin, GPIO_PIN_RESET)
+#define STATE_UNINITIALIZED 0
+#define STATE_READY 1
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -122,10 +133,35 @@ static void MX_USART1_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+volatile uint32_t global_frame;
+volatile uint32_t animation_start_frame;
+
+void animation_handler(void)
+{
+  if(current_state != STATE_READY)
+    return;
+  global_frame++;
+  uint32_t current_frame = global_frame - animation_start_frame;
+  if(current_frame <= 2)
+    LED_OFF();
+  else if(current_frame <= 4)
+    LED_ON();
+  else if(current_frame <= 6)
+    LED_OFF();
+  else
+    LED_ON();
+}
+
 // happens every 25ms
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+  animation_handler();
   channel_update(starting_id);
+}
+
+void double_blink(void)
+{
+  animation_start_frame = global_frame;
 }
 
 uint32_t get_rand_delay_ms(void)
@@ -133,10 +169,6 @@ uint32_t get_rand_delay_ms(void)
   srand(micros());
   return 50 + (rand() % 16) * 10;
 }
-
-#define STATE_UNINITIALIZED 0
-#define STATE_READY 1
-volatile uint8_t current_state;
 
 #define TOP_TWO_BITS 0xc0
 #define CMD_ASK_START_ID_BITMASK 0x0
@@ -149,6 +181,7 @@ void towards_duckypad_receive_parse(uint8_t this_cmd)
   {
     starting_id = towards_duckypad_rx_buf[0] & 0x3f;
     current_state = STATE_READY;
+    LED_ON();
     // printf("Got ID: %x\n", starting_id);
   }
 }
@@ -229,7 +262,6 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   printf("duckyPad Pro Expansion Module v%d.%d.%d\n", fw_version_major, fw_version_minor, fw_version_patch);
-  
   while (1)
   {
     HAL_UART_Receive_IT(&towards_duckypad_uart, towards_duckypad_rx_buf, 1);
@@ -247,12 +279,12 @@ int main(void)
     }
     else
     {
-      HAL_GPIO_WritePin(SSTX_USERLED_GPIO_Port, SSTX_USERLED_Pin, GPIO_PIN_SET);
       HAL_Delay(UART_QUEUE_SEND_FREQ_MS);
       uint8_t this_cmd;
       if(q_pop(&switch_event_queue, &this_cmd) == 0)
         continue;
       towards_duckypad_send(this_cmd);
+      double_blink();
     }
   }
   /* USER CODE END 3 */
