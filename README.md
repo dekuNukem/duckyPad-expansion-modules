@@ -1,5 +1,8 @@
 # duckyPad Expansion Module
 
+[Pre-order](https://www.kickstarter.com/projects/dekunukem/duckypad-pro-advanced-macro-scripting-beyond-qmk-via) | [Official Discord](https://discord.gg/4sJCBx5) | [Project Page](https://github.com/dekuNukem/duckyPad-Pro) | [Table of Contents](#table-of-contents)
+
+
 duckyPad Expansion Module lets you add external **switches / buttons / foot pedals** to your duckyPad Pro.
 
 * **8 Channels** Per Module
@@ -121,6 +124,28 @@ The screen should respond too:
 If so, congrats! The wiring is correct.
 
 ## Configurator
+
+You can assign actions to the expansion channels just like any other keys in the configurator.
+
+![alt_text](resources/photos/config.png)
+
+Couple of notes:
+
+* If using a flip switch, select `Disable Auto-Repeat` so the script doesn't repeat after changing state.
+
+![alt_text](resources/photos/repeat.png)
+
+* Each channel can have different scripts for `onPress` and `onRelease`.
+	* `onPress` is when a channel goes from inactive to active
+	* `onRelase` is the opposite
+
+![alt_text](resources/photos/on.png)
+
+## Questions or Comments?
+
+Please feel free to [open an issue](https://github.com/dekuNukem/duckypad-pro/issues), ask in the [official duckyPad discord](https://discord.gg/4sJCBx5), or email `dekuNukem`@`gmail`.`com`!
+
+----
 
 ![alt_text](resources/photos/underc.gif)
 
