@@ -3,7 +3,7 @@
 [Pre-order](https://www.kickstarter.com/projects/dekunukem/duckypad-pro-advanced-macro-scripting-beyond-qmk-via) | [Official Discord](https://discord.gg/4sJCBx5) | [Project Page](https://github.com/dekuNukem/duckyPad-Pro) | [Table of Contents](#table-of-contents)
 
 
-duckyPad Expansion Module lets you add external **switches / buttons / foot pedals** to your duckyPad Pro.
+duckyPad Expansion Module lets you wire up external **switches / buttons / foot pedals** to your duckyPad Pro.
 
 * **8 Channels** Per Module
 
@@ -17,7 +17,13 @@ duckyPad Expansion Module lets you add external **switches / buttons / foot peda
 
 ## Table of Contents
 
-![alt_text](resources/photos/underc.gif)
+- [Kit Assembly](#kit-assembly)
+- [Connection Overview](#connection-overview)
+	- [Terminal Block](#connection-terminal-block)
+	- [3.5mm Audio Jack](#connection-35mm-audio-jack)
+	- [Pin Headers](#connection-pin-headers)
+- [Key Test](#key-test)
+- [Configurator](#configurator)
 
 ## Kit Assembly
 
@@ -45,7 +51,7 @@ Then the `8mm Metal Spacer`
 
 * **Moderately tighten** with a socket bit if available
 
-* If using pliers, avoid scratching the PCB or nearby components.
+* Avoid scratching the PCB or nearby components.
 
 ![alt_text](resources/photos/spacer.jpeg)
 
@@ -53,25 +59,35 @@ Leave the `Top Plate` off for now.
 
 You can install it after everything is wired up.
 
-## Connection
+## Connection Overview
+
+There are **8 Channels** available per module.
+
+* Numbered 1 to 8
+* A channel is **considered active** when it is **shorted to ground (GND)**.
+
+Therefore, to wire up a switch, you just need to:
+
+* Connect **one side** to **GND**
+* And the **other side** to the **desired channel**
+
+---------
+
+You can make connections via:
+
+* Terminal Block
+* 3.5mm Jack
+* Pin Headers
+
+## Connection: Terminal Block
 
 Take a look at the `terminal block`:
 
 ![alt_text](resources/photos/block.jpeg)
 
-* There are **7 Channels**, labelled 1 to 7.
+* Contains **Channel 1 to 7** and **Ground** (GND)
 
-* And a **Ground** (GND) connection.
-
-The gist of operation is:
-
-* A channel is **considered active** when it is **shorted to GND**.
-
-Therefore, to wire up a switch, all you need is to:
-
-* Connect **one side** of the switch to **GND**
-
-* And the **other side** to the **desired channel**
+To wire up a switch, connect it between a channel and GND.
 
 -------
 
@@ -81,11 +97,11 @@ As an example, here's a push button with two wires attached:
 
 When not pushed, those two wires are isolated.
 
-When pushed, those two wires will be **connected together**.
+When pushed, those two wires are **connected together**.
 
 Therefore, we just need to connect one wire to GND, and the other to a channel.
 
-* Flip up the lever for GND and the desired channel (4 in this example)
+* Flip up the lever for GND and the desired channel
 
 ![alt_text](resources/photos/flip.jpeg)
 
@@ -94,6 +110,24 @@ Therefore, we just need to connect one wire to GND, and the other to a channel.
 * Flip level back down
 
 ![alt_text](resources/photos/inserted.jpeg)
+
+## Connection: 3.5mm Audio Jack
+
+Two 3.5mm TRS (Tip, Ring, Sleeve) connectors are available.
+
+Sleeve is connected to GND.
+
+Tip and Ring are connected to channels as shown below.
+
+![alt_text](resources/photos/jack.png)
+
+## Connection: Pin Headers
+
+All channels are also available on pin headers.
+
+You can solder a header or wires directly to them.
+
+![alt_text](resources/photos/header.png)
 
 ## Key Test
 
@@ -127,11 +161,14 @@ If so, congrats! The wiring is correct.
 
 You can assign actions to the expansion channels just like any other keys in the configurator.
 
+Module 1 is the closest to duckyPad, up to 4 can be daisy-chained.
+
 ![alt_text](resources/photos/config.png)
 
-Couple of notes:
+Some notes:
 
-* If using a flip switch, select `Disable Auto-Repeat` so the script doesn't repeat after changing state.
+* If using a flip switch, select `Disable Auto-Repeat`.
+* So the script doesn't repeat after changing state.
 
 ![alt_text](resources/photos/repeat.png)
 
@@ -144,8 +181,3 @@ Couple of notes:
 ## Questions or Comments?
 
 Please feel free to [open an issue](https://github.com/dekuNukem/duckypad-pro/issues), ask in the [official duckyPad discord](https://discord.gg/4sJCBx5), or email `dekuNukem`@`gmail`.`com`!
-
-----
-
-![alt_text](resources/photos/underc.gif)
-
