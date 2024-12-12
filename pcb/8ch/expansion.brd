@@ -256,6 +256,7 @@ PAD
 <text x="20.074" y="15.621" size="1.778" layer="26" rot="SMR0" align="center">7</text>
 <text x="49.792" y="14.859" size="1.778" layer="26" rot="SMR0" align="center">8</text>
 <text x="52.324" y="15.629" size="1.27" layer="26" rot="SMR270" align="center">GND</text>
+<text x="1.6118" y="6.4636" size="1.778" layer="25" rot="R180" align="center">7</text>
 </plain>
 <libraries>
 <library name="clock">
