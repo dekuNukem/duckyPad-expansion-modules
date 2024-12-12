@@ -85,7 +85,7 @@ Take a look at the `terminal block`:
 
 ![alt_text](resources/photos/block.jpeg)
 
-* Contains **Channel 1 to 7** and **GND**
+Contains **Channel 1 to 7** and **GND**
 
 To wire up a switch, connect it between a channel and GND.
 
@@ -95,9 +95,8 @@ As an example, here's a simple button with two wires:
 
 ![alt_text](resources/photos/push.jpeg)
 
-When not pushed, the wires are isolated.
-
-When pushed, those two wires are **connected together**.
+* When not pushed, the wires are isolated.
+* When pushed, they are **connected together**.
 
 Therefore, we just need to attach one wire to GND, and the other to a channel.
 
@@ -107,7 +106,7 @@ Therefore, we just need to attach one wire to GND, and the other to a channel.
 
 * Strip around half inch / 1.2cm of conductor
 * Insert into the hole
-* Flip level back down
+* Flip lever back down
 
 ![alt_text](resources/photos/inserted.jpeg)
 
