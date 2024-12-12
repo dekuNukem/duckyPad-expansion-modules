@@ -61,7 +61,7 @@ You can install it after everything is wired up.
 
 ## Connection Overview
 
-There are **8 Channels** available per module.
+**8 Channels** are available per module.
 
 * Numbered 1 to 8
 * A channel is **considered active** when it is **shorted to ground (GND)**.
@@ -85,21 +85,21 @@ Take a look at the `terminal block`:
 
 ![alt_text](resources/photos/block.jpeg)
 
-* Contains **Channel 1 to 7** and **Ground** (GND)
+* Contains **Channel 1 to 7** and **GND**
 
 To wire up a switch, connect it between a channel and GND.
 
 -------
 
-As an example, here's a push button with two wires attached:
+As an example, here's a simple button with two wires:
 
 ![alt_text](resources/photos/push.jpeg)
 
-When not pushed, those two wires are isolated.
+When not pushed, the wires are isolated.
 
 When pushed, those two wires are **connected together**.
 
-Therefore, we just need to connect one wire to GND, and the other to a channel.
+Therefore, we just need to attach one wire to GND, and the other to a channel.
 
 * Flip up the lever for GND and the desired channel
 
@@ -117,7 +117,7 @@ Two 3.5mm TRS (Tip, Ring, Sleeve) connectors are available.
 
 Sleeve is connected to GND.
 
-Tip and Ring are connected to channels as shown below.
+Tip and Ring are connected to channels shown below.
 
 ![alt_text](resources/photos/jack.png)
 
@@ -125,7 +125,7 @@ Tip and Ring are connected to channels as shown below.
 
 All channels are also available on pin headers.
 
-You can solder a header or wires directly to them.
+You can install a header or solder wires directly to them.
 
 ![alt_text](resources/photos/header.png)
 
@@ -159,9 +159,9 @@ If so, congrats! The wiring is correct.
 
 ## Configurator
 
-You can assign actions to the expansion channels just like any other keys in the configurator.
+You can assign actions to expansion channels just like any other keys.
 
-Module 1 is the closest to duckyPad, up to 4 can be daisy-chained.
+Module 1 is closest to duckyPad, up to 4 can be daisy-chained.
 
 ![alt_text](resources/photos/config.png)
 
