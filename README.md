@@ -61,9 +61,9 @@ You can install it after everything is wired up.
 
 ## Back to duckyPad!
 
-If you're just getting started, **set up with your duckyPad first by [following the User Guide](https://dekunukem.github.io/duckyPad-Pro/doc/getting_started.html)**
+If you're just starting, **set up your duckyPad first by [following the User Guide](https://dekunukem.github.io/duckyPad-Pro/doc/getting_started.html)**
 
-Continue here once familiarised.
+Play with scripts on built-in switches and encoders, continue here once familiarised.
 
 ## Connection Overview
 
