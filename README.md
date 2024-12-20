@@ -59,6 +59,12 @@ Leave the `Top Plate` off for now.
 
 You can install it after everything is wired up.
 
+## Back to duckyPad!
+
+If you're just getting started, **set up with your duckyPad first by [following the User Guide](https://dekunukem.github.io/duckyPad-Pro/doc/getting_started.html)**
+
+Continue here once familiarised.
+
 ## Connection Overview
 
 **8 Channels** are available per module.
