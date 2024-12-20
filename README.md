@@ -148,23 +148,23 @@ Press the `Key Test` script in `Welcome` profile
 
 ![alt_text](resources/photos/home.png)
 
-Press a button, the screen should show what is being pressed.
+Press a built-in switch, the screen should respond.
 
-Activate a channel on the expansion module.
+Then activate a channel on the expansion module.
 
 The corresponding LED should light up:
 
 ![alt_text](resources/photos/led.png)
 
-The screen should respond too:
+The screen should show too:
 
 ![alt_text](resources/photos/test.jpeg)
 
-If so, congrats! The wiring is correct.
+If so, congrats! Your wiring is correct.
 
 ## Configurator
 
-You can assign actions to expansion channels just like any other keys.
+You can assign actions to expansion channels just like any other key.
 
 Module 1 is closest to duckyPad, up to 4 can be daisy-chained.
 
